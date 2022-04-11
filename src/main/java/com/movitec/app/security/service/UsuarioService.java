@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.movitec.app.dto.UsuarioListDto;
 import com.movitec.app.security.entity.Usuario;
 import com.movitec.app.security.repository.UsuarioRepository;
 
@@ -15,6 +14,11 @@ import com.movitec.app.security.repository.UsuarioRepository;
 public class UsuarioService {
 	@Autowired
 	UsuarioRepository usuarioRepository;
+	
+	@Transactional(readOnly = true)
+	public Optional<Usuario> getById(Integer id){
+		return usuarioRepository.findById(id);
+	}
 	
 	@Transactional(readOnly = true)
 	public Optional<Usuario> getByNombreUsuario(String nombreUsuario){
@@ -39,5 +43,15 @@ public class UsuarioService {
 	@Transactional(readOnly = true)
 	public List<Usuario> findAll(){
 		return usuarioRepository.findAll();
+	}
+	
+	@Transactional
+	public void deleteById(Integer id) {
+		usuarioRepository.deleteById(id);
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Usuario> findActivos(){
+		return usuarioRepository.findByEstado(true);
 	}
 }

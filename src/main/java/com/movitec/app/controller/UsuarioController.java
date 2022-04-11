@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,6 +27,7 @@ public class UsuarioController {
 		List<UsuarioListDto> listareturn = new ArrayList<UsuarioListDto>();
 		for(int i = 1; i < lista.size(); i++) {
 			UsuarioListDto usuario = new UsuarioListDto();
+			usuario.setId(lista.get(i).getId());
 			usuario.setApellidos(lista.get(i).getApellidos());
 			usuario.setCorreo(lista.get(i).getEmail());
 			usuario.setDireccion(lista.get(i).getDireccion());
@@ -38,5 +41,15 @@ public class UsuarioController {
 			listareturn.add(usuario);
 		}
 		return listareturn;
+	}
+	
+	@DeleteMapping("/{id}")
+	public boolean deleteById(@PathVariable(value = "id") Integer id) {
+		try {
+			service.deleteById(id);
+			return true;
+		} catch(Exception e) {
+			return false;
+		}
 	}
 }

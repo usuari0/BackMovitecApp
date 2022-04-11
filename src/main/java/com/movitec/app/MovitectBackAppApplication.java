@@ -6,11 +6,18 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.movitec.app.entity.EnviarGmail;
+
 @SpringBootApplication
 public class MovitectBackAppApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MovitectBackAppApplication.class, args);
+		/*
+		EnviarGmail a = new EnviarGmail();
+		
+		a.enviar();
+		*/
 	}
 
 	@Bean

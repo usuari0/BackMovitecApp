@@ -9,6 +9,7 @@ import javax.validation.constraints.NotBlank;
 import com.movitec.app.entity.TipoDocumento;
 
 public class NuevoUsuario {
+	private Integer Id;
 	@NotBlank
 	private String nombre;
 	@NotBlank
@@ -96,5 +97,11 @@ public class NuevoUsuario {
 	}
 	public void setTipoDocumento(TipoDocumento tipoDocumento) {
 		this.tipoDocumento = tipoDocumento;
+	}
+	public Integer getId() {
+		return Id;
+	}
+	public void setId(Integer id) {
+		Id = id;
 	}
 }

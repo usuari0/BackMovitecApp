@@ -61,6 +61,13 @@
 		    <version>0.9.1</version>
 		</dependency>
 		
+		<!-- Para poder enviar gmail -->
+    	<dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+		
 	</dependencies>
 
 	<build>

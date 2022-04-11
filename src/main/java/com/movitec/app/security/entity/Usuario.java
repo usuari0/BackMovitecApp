@@ -44,7 +44,7 @@ public class Usuario {
 	@Column(nullable = false, length = 100)
 	private String direccion;
 
-	@ManyToOne//(cascade = CascadeType.MERGE)
+	@ManyToOne
 	@JoinColumn(name = "tipo_documento_id")
 	private TipoDocumento tipoDocumento;
 	
